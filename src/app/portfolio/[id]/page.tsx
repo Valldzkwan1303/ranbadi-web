@@ -1,7 +1,15 @@
+// src/app/portfolio/[id]/page.tsx
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { projectsData } from "@/data/projects";
 import { ArrowLeft, CheckCircle2, ShieldCheck, Zap, Layers, ArrowUpRight } from "lucide-react";
+
+// Memberitahu Next.js daftar halaman yang akan dibuat secara statis saat build
+export function generateStaticParams() {
+  return projectsData.map((project) => ({
+    id: project.id,
+  }));
+}
 
 interface PageProps {
   params: Promise<{ id: string }>;
